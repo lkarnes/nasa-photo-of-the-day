@@ -1,27 +1,37 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import PhotoCard from './PhotoCard';
-
 export default function PhotoList(){
-    const [img, setImg] = useState(null)
+    const [url, setUrl] = useState(null)
     const [date, setDate] = useState(null)
     const [title, setTitle] = useState(null)
-    const [expl , setExpl] = useState(null)
+    const [explan , setExpl] = useState(null)
     useEffect(()=>{
-        axios.get("https://api.nasa.gov/planetary/apod?api_key=JppcliqRSl68SHzx9FNy4nunp4NRMjOjP7Bj7AOX")
+        axios.get(`https://api.nasa.gov/planetary/apod?api_key=JppcliqRSl68SHzx9FNy4nunp4NRMjOjP7Bj7AOX${dateInput}`)
     .then(input =>{
         const apiData = input.data;
         setTitle(apiData.title);
-        setImg(apiData.url)
+        setUrl(apiData.url)
         setDate(apiData.date)
         setExpl(apiData.explanation)
-        
+    })
+    .catch((err)=>{
+        console.log(err)
     })
     },[date])
-    
+    const [dateBox, setDateBox] = useState('')
+    const dateInput = `&date=${dateBox}`;
+    function runDate(){
+
+    }
     return(
     <div>
-        <PhotoCard img={img} date={date} title={title} expl={expl} />
+        <form>
+            <label>Enter a Date </label>
+            <input onChange={input=>runDate(input.target.value)}id="date" type="date" value={dateBox}/>
+            <input type='submit'/>
+        </form>
+        <PhotoCard image={url} dt={date} ttl={title} expl={explan} />
     </div>
     );
 }
