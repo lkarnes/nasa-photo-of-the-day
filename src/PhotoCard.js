@@ -11,9 +11,12 @@ export default function PhotoCard({image , dt, ttl, expl }){
         <Image src={image} size='huge' centered rounded />
         <Divider/>
         <Container textAlign='left' text>
-            <Modal trigger={<Button inverted color='white'>Show Explanation</Button>} closeIcon>
+            <Modal trigger={<Button inverted >Show Explanation</Button>} closeIcon>
                 <Modal.Content text>
+                    <Image src={image} size='medium' centered/>
+                    <p></p>
                     <Header>Eplanation</Header>
+                    
                     <div>{expl}</div>
                 </Modal.Content>
             </Modal>

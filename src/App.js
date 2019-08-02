@@ -3,6 +3,7 @@ import "./App.css";
 import HeaderComp from './Header.js';
 import PhotoList from './PhotoList.js';
 import styled from 'styled-components';
+
 const Body = styled.div`
 border-top: 15px solid #FC3D21;
 padding-top: 20px;

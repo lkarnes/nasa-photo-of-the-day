@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import PhotoCard from './PhotoCard';
+
 export default function PhotoList(){
     const [url, setUrl] = useState(null)
     const [date, setDate] = useState(null)
